@@ -15,11 +15,11 @@ playersElement.addEventListener("keypress", () => {
 formElement.addEventListener("submit", e => {
   e.preventDefault();
   const players = playersElement.value.split("\n");
-  players.forEach((player, index) => {
-    if(player.trim() === ""){
-      players.splice(index, 1);
+  for ( let i = 0; i < players.length; i++) {
+    if(players[i].trim() === "") {
+      players.splice(i, 1);
     }
-  });
+  }
 
   const total = players.length;
   if (total / 2 !== Math.floor(total / 2)) {
