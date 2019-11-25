@@ -15,8 +15,11 @@ playersElement.addEventListener("keypress", () => {
 formElement.addEventListener("submit", e => {
   e.preventDefault();
   const players = playersElement.value.split("\n");
-  // for ( let i = 0; i < players.length / 2; i++ ) {
-  // }
+  players.forEach((player, index) => {
+    if(player.trim() === ""){
+      players.splice(index, 1);
+    }
+  });
 
   const total = players.length;
   if (total / 2 !== Math.floor(total / 2)) {
@@ -32,7 +35,6 @@ formElement.addEventListener("submit", e => {
     const index = Math.floor(Math.random() * (players.length - 0) + 0);
     if (players[index]) {
       if (firstTeam.length !== total / 2) {
-        console.log(firstTeam.length, total / 2);
         firstTeam.push(players[index]);
       } else {
         secondTeam.push(players[index])
